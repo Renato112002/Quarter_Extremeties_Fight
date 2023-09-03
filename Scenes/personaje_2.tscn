@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=3 uid="uid://d2psvkatn1d0t"]
+[gd_scene load_steps=62 format=3 uid="uid://d2psvkatn1d0t"]
 
+[ext_resource type="PackedScene" uid="uid://b742rqp6hc860" path="res://Scenes/brazo_verde_2.tscn" id="1_h61t2"]
 [ext_resource type="Texture2D" uid="uid://b75ynfma7cwhi" path="res://Assets/Personaje/Character Idle 48x48.png" id="2_2o3hq"]
 [ext_resource type="Texture2D" uid="uid://q6d2cwuuqt4y" path="res://Assets/Personaje/idle-verde.png" id="3_pqq1v"]
 [ext_resource type="Texture2D" uid="uid://dc18m4ikxtcyk" path="res://Assets/Personaje/player jump 48x48.png" id="4_6e4n4"]
@@ -15,8 +16,11 @@ var speed = 300
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var jump_speed = -500
 var lanzar_animation_playing = false
+var brazos_count = 1
 
 @onready var _animated_sprite = $AnimatedSprite2D
+@export var brazo_scene: PackedScene 
+@onready var hombro = $hombro
 
 func _ready() -> void:
 	pass
@@ -73,6 +77,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 
 	move_and_slide()
+	
+	if Input.is_action_just_pressed(\"lanzar2\") && brazos_count >0:
+		lanzar()
+		_animated_sprite.play(\"lanzar\")
+		lanzar_animation_playing = true
+		brazos_count -=1
 
 # Agregar esta función para controlar el último frame de la animación de salto
 func _on_AnimatedSprite2D_animation_finished():
@@ -83,6 +93,13 @@ func _on_AnimatedSprite2D_animation_finished():
 		
 	elif _animated_sprite.animation == \"lanzar\":
 		_animated_sprite.frame = _animated_sprite.frame_count - 1
+
+func lanzar():
+	if not brazo_scene:
+		return
+	var extremidad = brazo_scene.instantiate()
+	get_parent().add_child(extremidad)
+	extremidad.global_position = hombro.global_position
 
 "
 
@@ -480,6 +497,7 @@ height = 160.0
 
 [node name="personaje_2" type="CharacterBody2D"]
 script = SubResource("GDScript_qew2v")
+brazo_scene = ExtResource("1_h61t2")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -489,3 +507,6 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_spmo5")
+
+[node name="hombro" type="Marker2D" parent="."]
+position = Vector2(-15, -13)

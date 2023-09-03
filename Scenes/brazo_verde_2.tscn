@@ -1,40 +1,41 @@
-[gd_scene load_steps=12 format=3 uid="uid://b25ruixcs4rkh"]
+[gd_scene load_steps=13 format=3 uid="uid://b742rqp6hc860"]
 
-[ext_resource type="Texture2D" uid="uid://bbvagqqk06mjc" path="res://Assets/Personaje/brazoverde.png" id="1_6o5uq"]
+[ext_resource type="Script" path="res://Scenes/brazo_verde2.gd" id="1_fencf"]
+[ext_resource type="Texture2D" uid="uid://bbvagqqk06mjc" path="res://Assets/Personaje/brazoverde.png" id="2_qrhmj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im2jj"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfye5"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8sg4"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40akq"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy1xl"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjflj"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0rl5"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoq2p"]
-atlas = ExtResource("1_6o5uq")
+atlas = ExtResource("2_qrhmj")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k6ov3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5u3jp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -71,18 +72,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4s5l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ma7o"]
 size = Vector2(11, 5)
 
-[node name="Area2D" type="Area2D"]
+[node name="brazo_verde2" type="RigidBody2D"]
+script = ExtResource("1_fencf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_k6ov3")
+sprite_frames = SubResource("SpriteFrames_5u3jp")
 animation = &"tirado"
-frame_progress = 0.590196
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 2)
 scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_e4s5l")
+shape = SubResource("RectangleShape2D_8ma7o")
