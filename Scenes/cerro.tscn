@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b10kw282haag2"]
+
+[ext_resource type="Texture2D" uid="uid://c8dlhdeo636fy" path="res://Assets/Escenario/far-grounds.png" id="1_qms8h"]
+
+[node name="cerro" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qms8h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-308, 54, -255, 33, -199, 18, -147, 7, -124, 3, -122, 0, -85, -12, -53, -22, -47, -29, -44, -54, -42, -56, -37, -56, -36, -50, -34, -43, -32, -39, -29, -33, -30, -29, -31, -28, -30, -23, -25, -20, -18, -19, -15, -13, -6, -8, 0, -6, 86, 3, 140, 11, 174, 16, 248, 30, 273, 37, 281, 41, 300, 47, 308, 55)

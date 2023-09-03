@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://b25ruixcs4rkh"]
+
+[ext_resource type="Texture2D" uid="uid://bbvagqqk06mjc" path="res://Assets/Personaje/brazoverde.png" id="1_6o5uq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2jj"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfye5"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8sg4"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40akq"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy1xl"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjflj"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0rl5"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoq2p"]
+atlas = ExtResource("1_6o5uq")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6ov3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im2jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfye5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8sg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40akq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy1xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjflj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0rl5")
+}],
+"loop": true,
+"name": &"girar",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoq2p")
+}],
+"loop": true,
+"name": &"tirado",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4s5l"]
+size = Vector2(11, 5)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k6ov3")
+animation = &"tirado"
+frame_progress = 0.590196
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 2)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_e4s5l")
